@@ -1,0 +1,46 @@
+version: "3"
+
+services:
+  db:
+    container_name: manwha_db
+    image: postgres:latest
+    # Match credential w/ the one on the db.js file
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+  api:
+    container_name: manwha_api
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - "1337:3000"
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+    volumes:
+    - ./api:/usr/src/api
+  app:
+    container_name: manwha_app
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    ports:
+      - "7000:7000"
+    depends_on:
+      - api
+    environment:
+      - API_URL=http://api:3000
+    volumes:
+    - ./app:/app
+
+volumes:
+  db_data:
