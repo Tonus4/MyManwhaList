@@ -11,6 +11,9 @@ services:
       POSTGRES_DB: ${DB_NAME}
     volumes:
       - db_data:/var/lib/postgresql/data
+      - ./api/database:/database
+    ports:
+      - "5432:5432"
   api:
     container_name: manwha_api
     build:

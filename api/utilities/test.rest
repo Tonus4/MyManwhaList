@@ -1,0 +1,16 @@
+###
+GET http://localhost:1337/api/setup
+
+###
+Get http://localhost:1337/api/manwha
+
+###
+POST http://localhost:1337/api/manwha
+Content-Type: application/json
+
+{
+  "title": "Bleach",
+  "author": "Tite Kubo",
+  "description": "Itchigo Kurosaki is a 15-year-old high school student who can see ghosts. One day, he meets Rukia Kuchiki, a Soul Reaper who fights evil spirits. After an accident, Ichigo gains Rukia's powers and becomes a Soul Reaper himself. He must now protect the living world from evil spirits and help guide souls to the afterlife.",
+  "poster": "https://example.com/bleach.jpg"
+}
