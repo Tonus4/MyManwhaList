@@ -1,0 +1,55 @@
+@use 'colors' as *;
+
+$header-height: 80px;  
+body {
+  margin: 0;
+  top: 0;
+  font-family: Arial, sans-serif;
+  background-color: getColor(dark, background);
+}
+
+header {
+  margin: 0;
+  height: $header-height;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: getColor(global, primary);
+}
+
+main {
+  margin: 0;
+  margin-top: 10px;
+  max-width: 100%;
+  min-height: 1000px;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+
+  #main {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 200;
+  }
+
+  #pannel {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 25%;
+    height: 200;
+    border-left: 3px solid getColor(dark, background-light);
+  }
+}
+
+footer {
+  height: $header-height;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
+  text-align: center;
+  background-color: getColor(global, secondary);
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
