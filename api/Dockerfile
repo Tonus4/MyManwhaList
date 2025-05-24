@@ -1,11 +1,17 @@
-FROM node:18
+FROM node:alpine3.19
 
-WORKDIR /usr/src/api
+RUN addgroup -g 1001 APIGROUP && \
+    adduser -G APIGROUP -u 1001 APIUSER -s /bin/sh -D 
+
+WORKDIR /api
 
 COPY package*.json ./
-RUN npm install
+RUN npm install -g nodemon && \
+    npm install
 
-COPY . .
+COPY --chown=APIUSER:APIGROUP . .
 
 EXPOSE 3000
+
+USER APIUSER
 CMD ["npm", "run", "dev"]

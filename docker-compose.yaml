@@ -1,4 +1,4 @@
-version: "3"
+version: "3.9"
 
 services:
   db:
@@ -19,6 +19,7 @@ services:
     build:
       context: ./api
       dockerfile: Dockerfile
+    command: nodemon server.js
     ports:
       - "1337:3000"
     depends_on:
@@ -30,7 +31,8 @@ services:
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_NAME=${DB_NAME}
     volumes:
-    - ./api:/usr/src/api
+    - ./api:/api
+    - /api/node_modules
   app:
     container_name: manwha_app
     build:

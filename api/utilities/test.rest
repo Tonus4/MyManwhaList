@@ -1,4 +1,7 @@
 ###
+GET http://localhost:1337/api
+
+###
 GET http://localhost:1337/api/setup
 
 ###
